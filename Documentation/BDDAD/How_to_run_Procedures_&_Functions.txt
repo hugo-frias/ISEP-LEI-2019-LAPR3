@@ -1,0 +1,33 @@
+
+select FUNCTION(parêmetro1, parâmetro2, parâmetroN) from dual;
+
+
+begin
+PROCEDURE(parêmetro1, parâmetro2, parâmetroN);
+end;
+/
+
+
+DECLARE
+user_array sys_refcursor;
+nome			VARCHAR(100);
+email			VARCHAR(20);
+pass			CHAR(10);
+height			INTEGER;
+weight			INTEGER;
+gender			CHAR(1);
+cyclingAvgSpeed		FLOAT(126);
+visaCardNumber		INTEGER;
+points			INTEGER;
+cmp_name		CHAR(20);
+
+BEGIN
+user_array := getUser('ana@isep.pt');
+	LOOP
+	Fetch user_array INTO nome, email, pass, height, weight, gender, cyclingAvgSpeed, visacardNumber, points, cmp_name;
+	EXIT WHEN user_array%NOTFOUND;
+	dbms_output.put_line(nome || ' ' || email || ' ' || height || ' ' || weight || ' ' || gender || ' ' || points );
+	END LOOP;
+	CLOSE user_array;
+END;
+/

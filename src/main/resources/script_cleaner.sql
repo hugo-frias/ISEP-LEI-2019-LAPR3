@@ -1,0 +1,5 @@
+delimiter /
+begin
+cleardatabase;
+end;
+/
